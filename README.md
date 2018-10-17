@@ -15,7 +15,7 @@ Clearly, this is less than ideal for high-value transactions. There is some degr
 
 *Note: This third-party threat is effectively neutralized in uni-lateral contract situations (e.g., Ebay) where promisee acceptance of a standing offer can immediately create privity and right to control. 
 
-*In more negotiated situations, such as an Asset Purchase Agreement, this threat can be also be substantially reduced by making contract execution itself functions to MasterEscrow, putting the promisee in control of collateral upon signing.
+*In more negotiated situations, such as an Asset Purchase Agreement, this threat can be also be substantially reduced by making contract execution itself call functions to MasterEscrow, putting the promisee in control of collateral upon signing.
 
 In progress:
 * OpenLaw Template integration: https://openlaw.io/
