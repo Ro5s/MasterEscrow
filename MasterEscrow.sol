@@ -102,7 +102,7 @@ contract Escrow {
 	function confirmPurchase()
     	public
     	inState(State.Created)
-    	condition(msg.value == (0 * value))
+    	condition(msg.value == value)
     	payable
 	{
     	emit PurchaseConfirmed();
@@ -125,6 +125,7 @@ contract Escrow {
 
     	// NOTE: This actually allows both the purchaser and the seller to
     	// block the refund - the withdraw pattern should be used.
+    	purchaser.transfer(value);
     	seller.transfer(address(this).balance);
 	}
 }
