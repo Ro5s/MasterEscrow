@@ -24,5 +24,5 @@ When the transaction completes, 0.4 ETH is delivered to Seller (including origin
 
 # WIP
 * OpenLaw template integration: https://openlaw.io/
-* [Allow Seller to whitelist Purchaser Ethereum address.]
+* [Allow Seller to whitelist Purchaser Ethereum address?]
 * [Allow Purchaser to seize seller collateral or portion?]
