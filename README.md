@@ -23,6 +23,6 @@ Before lockup, the Seller has a chance to abort and relist their escrow smart co
 When the transaction completes, 0.4 ETH is delivered to Seller (including original 0.2 ETH collateral), and 0.2 ETH is returned to Purchaser. In essence, this format allowed Purchaser to use an automated escrow to pay Seller 0.2 ETH with better assurance that the requested Item will be delivered from a stranger, and for the Seller, that Purchaser will not take too long to confirm Item was delivered so that they can retreive their matching collateral. 
 
 # WIP
-* OpenLaw Template integration: https://openlaw.io/
+* OpenLaw template integration: https://openlaw.io/
 * [Allow Seller to whitelist Purchaser Ethereum address.]
 * [Allow Purchaser to seize seller collateral or portion?]
