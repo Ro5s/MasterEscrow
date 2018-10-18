@@ -1,5 +1,5 @@
 # MasterEscrow
-Deploys a constructor for escrow smart contracts. Extension of https://solidity.readthedocs.io/en/v0.3.2/solidity-by-example.html#safe-remote-purchase. 
+Deploys a constructor for escrow smart contracts on Ethereum. Extension of https://solidity.readthedocs.io/en/v0.3.2/solidity-by-example.html#safe-remote-purchase. 
 
 # Escrow Description
 Seller stakes ETH value of Asset in new escrow smart contract ('asset purchase price').  
@@ -24,5 +24,5 @@ When the transaction completes, 0.4 ETH is delivered to Seller (including origin
 
 # WIP
 * OpenLaw Template integration: https://openlaw.io/
-* Allow Seller to assign collateral to specific Ethereum address on creating new escrow contract (close window on third-party risks).
+* [Allow Seller to whitelist Purchaser Ethereum address.]
 * [Allow Purchaser to seize seller collateral or portion?]
