@@ -1,5 +1,7 @@
 # MasterEscrow
-Deploys a constructor for escrow smart contracts on Ethereum. Extension of https://solidity.readthedocs.io/en/v0.3.2/solidity-by-example.html#safe-remote-purchase. Special thanks to Jackson Ng for his helpful series on "Escrow Service as a Smart Contract" and Solidity elaborations.
+Deploys a constructor for escrow smart contracts on Ethereum. Extension of https://solidity.readthedocs.io/en/v0.3.2/solidity-by-example.html#safe-remote-purchase. 
+
+Special thanks to Jackson Ng for his helpful series on "Escrow Service as a Smart Contract" and Solidity elaborations.
 
 # Instructions
 [ . . . ]
