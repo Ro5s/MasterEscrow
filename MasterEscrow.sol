@@ -125,7 +125,6 @@ contract Escrow {
 
     	// NOTE: This actually allows both the promisee and the promisor to
     	// block the refund - the withdraw pattern should be used.
-    	promisee.transfer(value);
     	promisor.transfer(address(this).balance);
 	}
 }
