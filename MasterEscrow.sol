@@ -47,14 +47,14 @@ contract MasterEscrow {
 
 contract Escrow {
 	uint public value;
-	address public seller;
-	address public purchaser;
+	address public promisor;
+	address public promisee;
 	string public ipfsHash;
 	enum State { Created, Locked, Inactive }
 	State public state;
     
-	constructor(address contractSeller, string contractHash) public payable {
-    	seller = contractSeller;
+	constructor(address contractPromisor, string contractHash) public payable {
+    	promisor = contractPromisor;
     	ipfsHash = contractHash;
     	value = msg.value;
 	}
@@ -64,13 +64,13 @@ contract Escrow {
     	_;
 	}
 
-	modifier onlyPurchaser() {
-    	require(msg.sender == purchaser);
+	modifier onlyPromisee() {
+    	require(msg.sender == promisee);
     	_;
 	}
 
-	modifier onlySeller() {
-    	require(msg.sender == seller);
+	modifier onlyPromisor() {
+    	require(msg.sender == promisor);
     	_;
 	}
 
@@ -80,52 +80,52 @@ contract Escrow {
 	}
 
 	event Aborted();
-	event PurchaseConfirmed();
-	event AssetReceived();
+	event PromiseConfirmed();
+	event BenefitReceived();
 
-	/// Abort the purchase and reclaim the ether.
-	/// Can only be called by the seller before
+	/// Abort the promise and reclaim the ether collateral.
+	/// Can only be called by the promisor before
 	/// the contract is locked.
 	function abort()
     	public
-    	onlySeller
+    	onlyPromisor
     	inState(State.Created)
 	{
     	emit Aborted();
     	state = State.Inactive;
-    	seller.transfer(address(this).balance);
+    	promisor.transfer(address(this).balance);
 	}
 
-	/// Confirm the purchase as purchaser.
+	/// Confirm the promise as promisee.
 	/// The ether will be locked until confirmReceived
 	/// is called.
-	function confirmPurchase()
+	function confirmPromise()
     	public
     	inState(State.Created)
-    	condition(msg.value == (2 * value))
+    	condition(msg.value == (1 * value))
     	payable
 	{
-    	emit PurchaseConfirmed();
-    	purchaser = msg.sender;
+    	emit PromiseConfirmed();
+    	promisee = msg.sender;
     	state = State.Locked;
 	}
 
-	/// Confirm that you (the purchaser) received the Asset.
+	/// Confirm that you (the promisee) received the Benefit.
 	/// This will release the locked ether.
 	function confirmReceived()
     	public
-    	onlyPurchaser
+    	onlyPromisee
     	inState(State.Locked)
 	{
-    	emit AssetReceived();
+    	emit BenefitReceived();
     	// It is important to change the state first because
     	// otherwise, the contracts called using `send` below
     	// can call in again here.
     	state = State.Inactive;
 
-    	// NOTE: This actually allows both the purchaser and the seller to
+    	// NOTE: This actually allows both the promisee and the promisor to
     	// block the refund - the withdraw pattern should be used.
-    	purchaser.transfer(value);
-    	seller.transfer(address(this).balance);
+    	promisee.transfer(value);
+    	promisor.transfer(address(this).balance);
 	}
 }
